@@ -1,8 +1,6 @@
-package ESTUDOS_OBI;
-
 import java.util.ArrayList;
 
-public class lista {
+public class fila {
     public static void main(String[] args) {
         ArrayList<String> alunos = new ArrayList<>();
 
@@ -13,8 +11,7 @@ public class lista {
         alunos.add("Murilo");
         System.out.println(alunos);
 
-
-        alunos.pop();
+        alunos.removeFirst();
 
         if(alunos.contains("Brayan")){
             System.out.println("Aluno presente!");

@@ -1,5 +1,4 @@
-package ESTUDOS_OBI;
-    public class Aluno {
+public class Aluno {
     
     //atributos
     String nome;

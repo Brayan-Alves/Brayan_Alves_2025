@@ -1,5 +1,3 @@
-package ESTUDOS_OBI;
-
 import java.util.HashSet;
 
 public class hashset {

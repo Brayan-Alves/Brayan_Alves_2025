@@ -1,4 +1,3 @@
-package ESTUDOS_OBI;
 
 public class testeObjeto {
     public static void main(String[] args) {
