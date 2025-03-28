@@ -14,7 +14,7 @@ public class lista {
         System.out.println(alunos);
 
 
-        alunos.remove("Brayan");
+        alunos.pop();
 
         if(alunos.contains("Brayan")){
             System.out.println("Aluno presente!");

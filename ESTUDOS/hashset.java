@@ -24,7 +24,7 @@ public class hashset {
 
         //outros comandos
         //".clear()" remove todos os elmentos  do conjunto
-        //".isEmpty()" verifica se o elemto esta no conjunto
+        //".isEmpty()" verifica se o elemento esta no conjunto
     }
     
 }
