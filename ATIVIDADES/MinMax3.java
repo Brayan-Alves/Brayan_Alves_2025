@@ -1,5 +1,3 @@
-package OBI_ATIVIDADES;
-
 import java.util.Random;
 
 public class MinMax3 {
@@ -44,7 +42,7 @@ public class MinMax3 {
             }
         }
 
-        System.out.println("Mior = " + max);
+        System.out.println("Maior = " + max);
         System.out.println("Menor = " + min);
         
     }
