@@ -7,16 +7,16 @@ public class macaco_prego {
 
     public static void main(String[] args) {
 
-        int[] x = new int[4];
-        int[] y = new int[4];
+        int[] x = new int[4];   //xA  xB  xAFinal xBFinal
+        int[] y = new int[4];   //yA  yB  yAFinal yBFinal
         int testes = 1;
 
         while (true) {
 
-            x[5] = Integer.MIN_VALUE;
-            x[6] = Integer.MAX_VALUE;
-            yAFinal = Integer.MAX_VALUE;
-            yBFinal = Integer.MIN_VALUE;
+            x[2] = Integer.MIN_VALUE;
+            x[3] = Integer.MAX_VALUE;
+            y[2] = Integer.MAX_VALUE;
+            y[3] = Integer.MIN_VALUE;
 
             int num = lerInt();
 
@@ -25,33 +25,34 @@ public class macaco_prego {
             }
 
             for (int i = 0; i < num; i++) {
-                int xA = lerInt();
-                int yA = lerInt();
-                int xB = lerInt();
-                int yB = lerInt();
+                x[0] = lerInt();
+                y[0] = lerInt();
+                x[1] = lerInt();
+                y[1] = lerInt();
 
-                if (xA > xAFinal) {
-                    xAFinal = xA;
+                if (x[0] > x[2]) {
+                    x[2] = x[0];
                 }
-                if (yA < yAFinal) {
-                    yAFinal = yA;
+                if (y[0] < y[2]) {
+                    y[2] = y[0];
                 }
-                if (xB < xBFinal) {
-                    xBFinal = xB;
+                if (x[1] < x[3]) {
+                    x[3] = x[1];
                 }
-                if (yB > yBFinal) {
-                    yBFinal = yB;
+                if (y[1] > y[3]) {
+                    y[3] = y[1];
                 }
             }
 
             System.out.println("Teste: " + testes);
             
-            if (yAFinal > yBFinal && xAFinal < xBFinal) {
-                System.out.println(xAFinal + " " + yAFinal + " " + xBFinal + " " + yBFinal);
+            if (y[2] > y[3] && x[2] < x[3]) {
+                System.out.println(x[2] + " " + y[2] + " " + x[3] + " " + y[3]);
             } else {
                 System.out.println("nenhum");
             }
             testes++;
+            System.out.println();
 
         }
 

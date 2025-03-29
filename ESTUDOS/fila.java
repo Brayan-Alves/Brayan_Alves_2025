@@ -11,8 +11,6 @@ public class fila {
         alunos.add("Murilo");
         System.out.println(alunos);
 
-        alunos.removeFirst();
-
         if(alunos.contains("Brayan")){
             System.out.println("Aluno presente!");
         }else{
