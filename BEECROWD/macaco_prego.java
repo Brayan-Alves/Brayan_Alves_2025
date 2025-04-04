@@ -44,7 +44,7 @@ public class macaco_prego {
                 }
             }
 
-            System.out.println("Teste: " + testes);
+            System.out.println("Teste " + testes);
             
             if (y[2] > y[3] && x[2] < x[3]) {
                 System.out.println(x[2] + " " + y[2] + " " + x[3] + " " + y[3]);
