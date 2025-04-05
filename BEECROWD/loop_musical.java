@@ -12,6 +12,8 @@ public class loop_musical {
             int picos = 0;
             int altitudePasssadaA = 0;
             int altitudePasssadaB = 0;
+            boolean inicioLoop = false;  //true = cima   false = baixo
+            boolean fimLoop = false;     //true = baixo  false = cima
 
 
             if(n == 0){
@@ -24,44 +26,38 @@ public class loop_musical {
                 altitudes[i] = LER.nextInt();
             }
 
-            if(altitudes.length == 2){
-                picos += 1;
-                if(altitudes[0] )
-            }else{
+            if(altitudes[0] > altitudes[1]){
+                inicioLoop = true;
+            }
+            if(altitudes[altitudes.length - 2] > altitudes[altitudes.length - 1]){
+                fimLoop = true;
+            }
 
-        
-            //     if(altitudes.length == 2){
-            //     picos += 2;
-            // }else{
-                // picos += 1;
-                // altitudePasssadaA = altitudes[0];
-                // altitudePasssadaB = altitudes[1];
+            altitudePasssadaA = altitudes[0];
+            altitudePasssadaB = altitudes[1];
+            picos++;
 
-                // for (int i = 2; i < altitudes.length; i++) {
-                //     if(altitudePasssadaA < altitudePasssadaB){
-                //         if(altitudes[i] < altitudePasssadaB){
-                //             picos++;
-                //         }
-                //     }else{
-                //         if(altitudes[i] > altitudePasssadaB){
-                //             picos++;
-                //         }
-                //     }
-                //     altitudePasssadaA = altitudePasssadaB;
-                //     altitudePasssadaB = altitudes[i];
-                // }
+            for (int i = 2; i < altitudes.length; i++) {
+                if(altitudePasssadaA > altitudePasssadaB){
+                    if(altitudes[i] > altitudePasssadaB){
+                        picos++;
+                    }
+                }else{
+                    if(altitudes[i] < altitudePasssadaB){
+                        picos++;
+                    }
+                }
+                altitudePasssadaA = altitudePasssadaB;
+                altitudePasssadaB = altitudes[i];
+            }
 
-                // if(altitudes[altitudes.length - 1] > altitudes[0]){
-                //     picos++;
-                // }else if(altitudes[altitudes.length - 1] < altitudes[0]){
-                //     picos++;
-                // }
-                
+            if(inicioLoop && fimLoop || !inicioLoop && !fimLoop){
+                picos++;
             }
 
             System.out.println(picos);
-
-            
-        }   
-    }
+                
+        } 
+    }   
 }
+
