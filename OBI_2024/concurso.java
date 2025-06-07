@@ -1,4 +1,4 @@
-package OBI;
+package OBI_2024;
 
 import java.util.Arrays;
 import java.util.Scanner;
