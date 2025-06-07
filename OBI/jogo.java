@@ -64,18 +64,12 @@ public class jogo {
                     }
                 }
             }
-            for (int j = 1; j < matFinal.length-1; j++) {
-                for (int j2 = 1; j2 < matFinal.length-1; j2++) {
-                    System.out.print(matFinal[j][j2]);
-                }
-                System.out.println();
-            }
-            System.out.println();
             mat = matFinal.clone();
+            matFinal = new int[x+2][x+2];
         }
         for (int j = 1; j < mat.length-1; j++) {
             for (int j2 = 1; j2 < mat.length-1; j2++) {
-                System.out.print(matFinal[j][j2]);
+                System.out.print(mat[j][j2]);
             }
             System.out.println();
         }
