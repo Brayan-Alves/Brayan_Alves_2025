@@ -1,3 +1,4 @@
+package OBI_2022;
 import java.util.Scanner;
 
 public class cameras {
