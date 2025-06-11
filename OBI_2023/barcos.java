@@ -19,44 +19,43 @@ public class barcos {
             mat[y][x] = mat[x][y];
         }
         n = LER.nextInt();
+        int cont = 0;
+        int popuF = Integer.MAX_VALUE;
         for (int i = 0; i < n; i++) {
-            
-            int maiorPopu = 0;
-            int melhorRota = 0;
             int x = LER.nextInt()-1;
             int y = LER.nextInt()-1;
-            boolean sePrimeira = true;
+            int maiorPopu = 0;
+            int melhorRota = 0;
             int index = 0;
-            int cont = 0;
+            jaVisitadas = new int[m];
+            for (int l = 0; l < jaVisitadas.length; l++) {
+                jaVisitadas[l] =  10;
+            }
+            
             while (true) {
                 maiorPopu = 0;
                 for (int j = 0; j < mat[0].length; j++) {
                     if(mat[x][j] > maiorPopu){
-                        for (int k = 0; k < index+1; k++) {
-                            if(j != jaVisitadas[index]){
-                                cont++;
-                            }
-                            if(cont == index+1){
-                                maiorPopu = mat[x][j];
-                                melhorRota = j;
-                            }
-                        }
+                        cont = 0;
+                        // for (int k = 0; k < index+1; k++) {
+                        //     if(j != jaVisitadas[k]){
+                        //         cont++;
+                        //     }
+                        // }
+                        //if(cont == index+1){
+                            maiorPopu = mat[x][j];
+                            melhorRota = j;
+                        //}
                     }
                 }
                 if(melhorRota == y){
-                    System.out.println(maiorPopu);
+                    System.out.println(popuF);
                     break;
                 }
-                if(!sePrimeira){
-                    x = melhorRota;
-                    jaVisitadas[index] = melhorRota;
-                    index++;
-                }else{
-                    x = melhorRota;
-                    jaVisitadas[index] = melhorRota;
-                    index++;
-                    sePrimeira = false;
-                }
+                //jaVisitadas[index] = x;
+                x = melhorRota;
+                popuF = Math.min(maiorPopu, popuF);
+            
             }
         }
     }
