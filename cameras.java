@@ -1,5 +1,3 @@
-package OBI;
-
 import java.util.Scanner;
 
 public class cameras {

@@ -1,4 +1,5 @@
-package OBI;
+package OBI_2023;
+
 
 import java.util.Scanner;
 
