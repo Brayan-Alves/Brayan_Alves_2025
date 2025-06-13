@@ -1,3 +1,5 @@
+import IFPR.matriz;
+
 public class num_prim{
     public static void main(String[] args) {
         
