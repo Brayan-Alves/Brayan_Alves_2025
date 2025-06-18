@@ -7,7 +7,7 @@ public class tempo_de_um_evento {
     public static void main(String[] args) {
 
 
-        int diminuir = 0;
+        
         String[] linha1 = LER.nextLine().split(" ");
         String[] linha2 = LER.nextLine().split(" ");
         int diaIni = Integer.parseInt(linha1[1]);
@@ -19,33 +19,19 @@ public class tempo_de_um_evento {
         
         int[] tempoEvento = new int[4]; //dia, hora, minuto, segundo
 
-        if(tempoFinal[2] - tempoIni[2] >= 0){ //segundos
-            tempoEvento[3] = tempoFinal[2] - tempoIni[2];
-        }else{
-            tempoEvento[3] = 60 - tempoIni[0] - tempoFinal[0];
-            diminuir = 1;
-        }
+        
 
-        if(tempoFinal[1] - tempoIni[1] >= 0){ //minutos
-            tempoEvento[2] = tempoFinal[1] - tempoIni[1] - diminuir;
-            diminuir = 0;
-        }else{
-            tempoEvento[2] = 60 - (tempoIni[1] - tempoFinal[1]) + diminuir;
-            diminuir = 1;
-        }
+        int inicio = diaIni * 86400 + tempoIni[0] * 3600 + tempoIni[1] * 60 + tempoIni[2];
+        int fim = diaFinal * 86400 + tempoFinal[0] * 3600 + tempoFinal[1] * 60 + tempoFinal[2];
+        int duracao = fim - inicio;
 
-        if(tempoFinal[0] - tempoIni[0] >= 0){ //horas
-            tempoEvento[1] = tempoFinal[0] - tempoIni[0] - diminuir;
-            diminuir = 0;
-        }else{
-            tempoEvento[1] = 24 - (tempoIni[0] - tempoFinal[0]) + diminuir;
-            diminuir = 1;
-        }
-
-        if(diaFinal - diaIni >= 0){ //horas
-            tempoEvento[0] = diaFinal - diaIni - diminuir;
-            diminuir = 0;
-        }
+        tempoEvento[0] = duracao / 86400;
+        duracao %= 86400;
+        tempoEvento[1] = duracao / 3600;
+        duracao %= 3600;
+        tempoEvento[2] = duracao / 60;
+        duracao %= 60;
+        tempoEvento[3] = duracao;
 
         for (int i = 0; i < tempoEvento.length; i++) {
             if(i == 0){
