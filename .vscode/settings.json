@@ -3,5 +3,6 @@
         "ESTUDOS",
         "ATIVIDADES",
         ""
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }
