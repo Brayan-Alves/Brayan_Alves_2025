@@ -28,7 +28,7 @@ public class No {
         return anterior;
     }
 
-    public void setAnteriro(No anterior) {
+    public void setAnterior(No anterior) {
         this.anterior = anterior;
     }
 
