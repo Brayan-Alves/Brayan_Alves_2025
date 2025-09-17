@@ -1,20 +1,23 @@
-package UNIVERSIDADE;
+package POO.UNIVERSIDADE;
 
-public class Disciplina {
+class Disciplina {
     private String nome;
-    private Professor responsavel;
+    private int semestre;
+
     public Disciplina() {
+
     }
+
     public String getNome() {
         return nome;
     }
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public Professor getResponsavel() {
-        return responsavel;
+    public int getSemestre() {
+        return semestre;
     }
-    public void setResponsavel(Professor responsavel) {
-        this.responsavel = responsavel;
+    public void setSemestre(int semestre) {
+        this.semestre = semestre;
     }
 }
