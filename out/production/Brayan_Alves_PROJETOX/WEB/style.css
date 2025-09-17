@@ -1,0 +1,18 @@
+body {
+    background-color:lightskyblue;
+}
+
+h1 {
+    font-family: Helvetica;
+    color:blue;
+}
+
+p{
+    color:crimson;
+    font-weight: bold;
+    font-family: cursive;
+}
+
+.grey-element{
+    color: gray;
+}

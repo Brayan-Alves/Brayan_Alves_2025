@@ -1,0 +1,2 @@
+git config --global user.name "Brayan_Alves"
+git config --global user.email brayanalvesdossantos67@gmail.com
