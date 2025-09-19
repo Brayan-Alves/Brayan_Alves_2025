@@ -1,1 +1,0 @@
-Dijkstra: encontra o caminho mais curto de um vértice de origem para todos os outros vértices em um grafo
