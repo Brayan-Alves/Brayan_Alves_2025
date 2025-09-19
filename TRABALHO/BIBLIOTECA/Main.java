@@ -24,17 +24,9 @@ public class Main {
         System.out.printf("2. Navegar como Funcionário");
         char operacao;
 
-        do {
-            operacao = LER.next().charAt(0);
-        } while (operacao != '1' || operacao != '2');
+        if()
 
-        LER.nextLine();
-        System.out.printf("Digite seu Nome: ");
-        String nome = LER.nextLine();
-        System.out.printf("Digite seu E-mail: ");
-        String email = LER.next();
-        System.out.printf("Digite sua senha: ");
-        String senha = LER.next();
+        
 
         Cliente c1 = new Cliente(nome, email, senha);
 
