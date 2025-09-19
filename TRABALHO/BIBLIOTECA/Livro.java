@@ -8,6 +8,16 @@ public class Livro{
     private int copiasTotal;
     private int copiasNoAcervo;
 
+    
+
+    public Livro(String nome, Autor autor, Editora editora, int copiasTotal, int copiasNoAcervo) {
+        this.nome = nome;
+        this.autor = autor;
+        this.editora = editora;
+        this.copiasTotal = copiasTotal;
+        this.copiasNoAcervo = copiasNoAcervo;
+    }
+
     public Livro() {
         
     }

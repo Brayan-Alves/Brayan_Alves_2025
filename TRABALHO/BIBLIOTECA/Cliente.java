@@ -4,12 +4,13 @@ import java.util.List;
 
 public class Cliente{
     private String nome;
-    private String email;
-    private String senha;
     private List<Emprestimo> emprestimosFeitos;
     private List<Livro> livrosEmPosse;
     
-    public Cliente() {
+    
+
+    public Cliente(String nome, String email, String senha) {
+        this.nome = nome;
     }
 
     public String getNome() {
@@ -52,11 +53,9 @@ public class Cliente{
         this.senha = senha;
     }
 
-    public void setEmprestimosFeitos(List<Emprestimo> emprestimosFeitos) {
-        this.emprestimosFeitos = emprestimosFeitos;
+    public void verLivrosEmPosee(List<Livro> livrosEmPossse){
+        System.out.println(livrosEmPossse);
     }
 
-    public void setLivrosEmPosse(List<Livro> livrosEmPosse) {
-        this.livrosEmPosse = livrosEmPosse;
-    }
+    
 }
