@@ -5,15 +5,13 @@ import java.util.List;
 import java.time.LocalDate;
 
 public class Emprestimo {
-    private String idEmprestimo;
     private List<Livro> livrosEmprestados;
     private Cliente cliente;
     private LocalDate dataEmprestimo;
     private LocalDate dataDevolucao;
     private Status estadoEmprestimo;
 
-    public Emprestimo(String idEmprestimo, Cliente cliente, LocalDate dataEmprestimo, LocalDate dataDevolucao) {
-        this.idEmprestimo = idEmprestimo;
+    public Emprestimo(Cliente cliente, LocalDate dataEmprestimo, LocalDate dataDevolucao) {
         this.cliente = cliente;
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dataDevolucao;
@@ -58,14 +56,6 @@ public class Emprestimo {
 
     public void setDataEmprestimo(LocalDate dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
-    }
-
-    public String getIdEmprestimo() {
-        return idEmprestimo;
-    }
-
-    public void setIdEmprestimo(String idEmprestimo) {
-        this.idEmprestimo = idEmprestimo;
     }
 
     public List<Livro> getLivrosEmprestados() {
