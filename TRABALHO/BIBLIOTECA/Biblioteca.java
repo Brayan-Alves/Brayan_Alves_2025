@@ -5,6 +5,7 @@ import java.util.LinkedList;
 public class Biblioteca {
     private String nome;
     private LinkedList<Livro> livros;
+    private LinkedList<Gerente> gerentes;
     private LinkedList<Cliente> clientes;
     private LinkedList<Funcionario> funcionarios;
     private LinkedList<Emprestimo> emprestimos;
@@ -14,9 +15,27 @@ public class Biblioteca {
         this.livros = new LinkedList<>();
         this.clientes = new LinkedList<>();
         this.funcionarios = new LinkedList<>();
+        this.gerentes = new LinkedList<>();
         this.emprestimos = new LinkedList<>();
     }
 
+
+
+    public LinkedList<Gerente> getGerentes() {
+        return gerentes;
+    }
+    public void setGerentes(LinkedList<Gerente> gerentes) {
+        this.gerentes = gerentes;
+    }
+    public void demitirGerente(Gerente gerente) {
+        gerentes.remove(gerente);
+    }
+    public void addGerente(Gerente gerente) {
+        gerentes.add(gerente);
+    }
+    public void removerLivro(Livro livro) {
+        livros.remove(livro);
+    }
     public void addLivro(Livro livro) {
         livros.add(livro);
     }
