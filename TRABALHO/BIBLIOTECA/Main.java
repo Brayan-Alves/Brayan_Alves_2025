@@ -17,7 +17,7 @@ public class Main {
         String email = null;
 
         preSetLivros(biblioteca);
-        
+
         while (true) {
             imprimirCabecalho();
             operacao = lerComRestricaoARec(operacao);
@@ -42,7 +42,7 @@ public class Main {
     }
 
     public static void menuFuncionario(Biblioteca biblioteca, Character operacao){
-        System.out.println("1. Adicionar livro\n 2. Remover livro\n 3. Ver todos os livros\n4. Ver empréstimos\n 5. Logout");
+        System.out.println("\n1. Adicionar livro\n2. Remover livro\n3. Ver todos os livros\n4. Ver empréstimos\n5. Logout");
         operacao = lerComRestricaoBRec(operacao);
         if(operacao == '1'){
             LER.nextLine();
@@ -72,6 +72,12 @@ public class Main {
             voltarProMenu(operacao, biblioteca, null, 2);
             limparTela();
         }else if(operacao == '4'){
+            if(biblioteca.getEmprestimos().isEmpty()){
+                System.out.println("\nNenhum empréstimo foi feito\n");
+                voltarProMenu(operacao, biblioteca, null, 2);
+                limparTela();
+                return;
+            }
             System.out.printf("\nEmpréstimos feitos:\n");
             for(Emprestimo emprestimo : biblioteca.getEmprestimos()){
                 int cont = 0;
@@ -105,65 +111,104 @@ public class Main {
             voltarProMenu(operacao, biblioteca, operacaoA, 3);
             limparTela();
         }else if(operacaoA.equals(2)){
-            for(Funcionario funcionario : biblioteca.getFuncionarios()){
-                System.out.println(biblioteca.getFuncionarios().indexOf(funcionario)+1 + ". " + funcionario.getNome());
+            
+            if(biblioteca.getFuncionarios().isEmpty()){
+                System.out.println("Nenhum funcionário cadastrado!\n");
+                voltarProMenu(operacao, biblioteca, operacaoA, 3);
+                limparTela();
+                return;
+            }else{
+                for(Funcionario funcionario : biblioteca.getFuncionarios()){
+                    System.out.println(biblioteca.getFuncionarios().indexOf(funcionario)+1 + ". " + funcionario.getNome());
+                }
+                System.out.println("Digite o número do funcionário que deseja demitir: ");
+                operacao = lerComRestricaoFRec(operacao, biblioteca);
+                biblioteca.getFuncionarios().remove(Character.getNumericValue(operacao) - 1);
+                System.out.println("Funcionário demitido com sucesso!");
+                voltarProMenu(operacao, biblioteca, operacaoA, 3);
+                limparTela();
             }
-            System.out.println("Digite o número do funcionário que deseja demitir: ");
-            operacao = lerComRestricaoFRec(operacao, biblioteca);
-            biblioteca.getFuncionarios().remove(Character.getNumericValue(operacao) - 1);
-            System.out.println("Funcionário demitido com sucesso!");
-            voltarProMenu(operacao, biblioteca, operacaoA, 3);
-            limparTela();
+            
         }else if(operacaoA.equals(3)){
             login(nome, email, senha, telefone, cpf, biblioteca, '1');
             System.out.println("Cliente cadastrado com sucesso!");
             voltarProMenu(operacao, biblioteca, operacaoA, 3);
             limparTela();
         }else if(operacaoA.equals(4)){
-            for(Cliente cliente : biblioteca.getClientes()){
-                System.out.println(biblioteca.getClientes().indexOf(cliente)+1 + ". " + cliente.getNome());
+            if(biblioteca.getClientes().isEmpty()){
+                System.out.println("Nenhum cliente cadastrado!\n");
+                voltarProMenu(operacao, biblioteca, operacaoA, 3);
+                limparTela();
+                return;
+            }else{
+                for(Cliente cliente : biblioteca.getClientes()){
+                    System.out.println(biblioteca.getClientes().indexOf(cliente)+1 + ". " + cliente.getNome());
+                }
+                System.out.println("Digite o número do cliente que deseja remover: ");
+                operacao = lerComRestricaoFRec(operacao, biblioteca);
+                biblioteca.getClientes().remove(Character.getNumericValue(operacao) - 1);
+                System.out.println("Cliente removido com sucesso!");
+                voltarProMenu(operacao, biblioteca, operacaoA, 3);
+                limparTela(); 
             }
-            System.out.println("Digite o número do cliente que deseja remover: ");
-            operacao = lerComRestricaoFRec(operacao, biblioteca);
-            biblioteca.getClientes().remove(Character.getNumericValue(operacao) - 1);
-            System.out.println("Cliente removido com sucesso!");
-            voltarProMenu(operacao, biblioteca, operacaoA, 3);
-            limparTela();
+            
         }else if(operacaoA.equals(5)){
-            System.out.println("Funcionários:");
-            for(Funcionario funcionario : biblioteca.getFuncionarios()){
-                System.out.println("- " + funcionario.getNome());
+            if(biblioteca.getFuncionarios().isEmpty()){
+                System.out.println("Nenhum funcionário cadastrado!\n");
+                voltarProMenu(operacao, biblioteca, operacaoA, 3);
+                limparTela();
+                return;
+            }else{
+                System.out.println("Funcionários:");
+                for(Funcionario funcionario : biblioteca.getFuncionarios()){
+                    System.out.println("- " + funcionario.getNome());
+                }
+                System.out.println();
+                voltarProMenu(operacao, biblioteca, operacaoA, 3);
+                limparTela();
             }
-            System.out.println();
-            voltarProMenu(operacao, biblioteca, operacaoA, 3);
-            limparTela();
         }else if (operacaoA.equals(6)) {
-            System.out.println("Clientes:");
-            for(Cliente cliente : biblioteca.getClientes()){
-                System.out.println("- " + cliente.getNome());
+            if(biblioteca.getClientes().isEmpty()){
+                System.out.println("Nenhum cliente cadastrado!\n");
+                voltarProMenu(operacao, biblioteca, operacaoA, 3);
+                limparTela();
+                return;
+            }else{
+                System.out.println("Clientes:");
+                for(Cliente cliente : biblioteca.getClientes()){
+                    System.out.println("- " + cliente.getNome());
+                }
+                System.out.println();
+                voltarProMenu(operacao, biblioteca, operacaoA, 3);
+                limparTela();
             }
-            System.out.println();
-            voltarProMenu(operacao, biblioteca, operacaoA, 3);
-            limparTela();
         }else if(operacaoA.equals(7)){
             verLivrosDisponiveis(biblioteca, operacao);
             System.out.println();
             voltarProMenu(operacao, biblioteca, operacaoA, 3);
             limparTela();
         }else if(operacaoA.equals(8)){
-            System.out.printf("\nEmpréstimos feitos:\n");
-            for(Emprestimo emprestimo : biblioteca.getEmprestimos()){
-                int cont = 0;
-                System.out.printf("Cliente: %s | Data do empréstimo: %s | Data de devolução: %s | Status: %s\n", emprestimo.getCliente().getNome(), emprestimo.getDataEmprestimo(), emprestimo.getDataDevolucao(), emprestimo.getEstadoEmprestimo());
-                System.out.println("  Livros emprestados:");
-                for (Livro livro : emprestimo.getLivrosEmprestados()) {
-                    cont++;
-                    System.out.printf("    %d. %s (Autor: %s, Editora: %s)\n\n", cont, livro.getNome(), livro.getAutor().getNome(), livro.getEditora().getNome());
+            if(biblioteca.getEmprestimos().isEmpty()){
+                System.out.println("\nNenhum empréstimo foi feito\n");
+                voltarProMenu(operacao, biblioteca, operacaoA, 3);
+                limparTela();
+                return;
+            }else{
+                System.out.printf("\nEmpréstimos feitos:\n");
+                for(Emprestimo emprestimo : biblioteca.getEmprestimos()){
+                    int cont = 0;
+                    System.out.printf("Cliente: %s | Data do empréstimo: %s | Data de devolução: %s | Status: %s\n", emprestimo.getCliente().getNome(), emprestimo.getDataEmprestimo(), emprestimo.getDataDevolucao(), emprestimo.getEstadoEmprestimo());
+                    System.out.println("  Livros emprestados:");
+                    for (Livro livro : emprestimo.getLivrosEmprestados()) {
+                        cont++;
+                        System.out.printf("    %d. %s (Autor: %s, Editora: %s)\n\n", cont, livro.getNome(), livro.getAutor().getNome(), livro.getEditora().getNome());
+                    }
                 }
+                System.out.println();
+                voltarProMenu(operacao, biblioteca, operacaoA, 3);
+                limparTela();  
             }
-            System.out.println();
-            voltarProMenu(operacao, biblioteca, operacaoA, 3);
-            limparTela();
+            
         }else if(operacaoA.equals(9)){
             login(nome, email, senha, telefone, cpf, biblioteca, '1');
             biblioteca.addEmprestimo(new Emprestimo(biblioteca.getClientes().getLast(), LocalDate.now(), LocalDate.now().plusDays(7)));
@@ -286,6 +331,12 @@ public class Main {
             limparTela();
         }else if(operacao == '2'){
             limparTela();
+            if(biblioteca.getClientes().getLast().getEmprestimosFeitos().isEmpty()){
+                System.out.println("Você não fez nenhum empréstimo ainda!\n");
+                voltarProMenu(operacao, biblioteca, null, 1);
+                limparTela();
+                return;
+            }
             System.out.printf("\nEmpréstimos feitos:\n");
             for(Emprestimo emprestimo : biblioteca.getClientes().getLast().getEmprestimosFeitos()){
                 int cont = 0;
