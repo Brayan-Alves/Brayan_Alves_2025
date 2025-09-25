@@ -16,12 +16,8 @@ public class Main {
         String senha = null;
         String email = null;
 
-        biblioteca.addLivro(new Livro("1984", new Autor("George Orwell"), new Editora("Companhia das Letras"), 3));
-        biblioteca.addLivro(new Livro("O Senhor dos Anéis", new Autor("J.R.R. Tolkien"), new Editora("HarperCollins"), 2));
-        biblioteca.addLivro(new Livro("Dom Casmurro", new Autor("Machado de Assis"), new Editora("Penguin-Companhia"), 4));
-        biblioteca.addLivro(new Livro("A Revolução dos Bichos", new Autor("George Orwell"), new Editora("Companhia das Letras"), 5));
-        biblioteca.addLivro(new Livro("O Pequeno Príncipe", new Autor("Antoine de Saint-Exupéry"), new Editora("Agir"), 6));
-
+        preSetLivros(biblioteca);
+        
         while (true) {
             imprimirCabecalho();
             operacao = lerComRestricaoARec(operacao);
@@ -390,6 +386,18 @@ public class Main {
         System.out.println("4. Sair");
         
 
+    }
+
+    public static void preSetLivros(Biblioteca biblioteca){
+        biblioteca.addLivro(new Livro("1984", new Autor("George Orwell"), new Editora("Companhia das Letras"), 3));
+        biblioteca.addLivro(new Livro("O Senhor dos Anéis", new Autor("J.R.R. Tolkien"), new Editora("HarperCollins"), 2));
+        biblioteca.addLivro(new Livro("Dom Casmurro", new Autor("Machado de Assis"), new Editora("Penguin-Companhia"), 4));
+        biblioteca.addLivro(new Livro("A Revolução dos Bichos", new Autor("George Orwell"), new Editora("Companhia das Letras"), 5));
+        biblioteca.addLivro(new Livro("O Pequeno Príncipe", new Autor("Antoine de Saint-Exupéry"), new Editora("Agir"), 6));
+        biblioteca.addLivro(new Livro("Fahrenheit 451", new Autor("Ray Bradbury"), new Editora("Companhia das Letras"), 3));
+        biblioteca.addLivro(new Livro("Cem Anos de Solidão", new Autor("Gabriel García Márquez"), new Editora("Record"), 4));
+        biblioteca.addLivro(new Livro("O Alquimista", new Autor("Paulo Coelho"), new Editora("Rocco"), 5));
+        
     }
 
 }
