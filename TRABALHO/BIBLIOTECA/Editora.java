@@ -7,9 +7,6 @@ public class Editora{
         this.nome = nome;
     }
 
-    public Editora() {
-    }
-    
     public String getNome() {
         return nome;
     }

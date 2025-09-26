@@ -3,7 +3,7 @@ package TRABALHO.BIBLIOTECA;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class Main {
+public class MainA {
     public static Scanner LER = new Scanner(System.in);
     public static void main(String[] args) {
         Biblioteca biblioteca = new Biblioteca("IFPR Biblioteca");

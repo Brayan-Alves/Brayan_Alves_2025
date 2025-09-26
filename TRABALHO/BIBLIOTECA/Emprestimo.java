@@ -1,11 +1,10 @@
 package TRABALHO.BIBLIOTECA;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 import java.time.LocalDate;
 
 public class Emprestimo {
-    private List<Livro> livrosEmprestados;
+    private LinkedList<Livro> livrosEmprestados;
     private Cliente cliente;
     private LocalDate dataEmprestimo;
     private LocalDate dataDevolucao;
@@ -15,7 +14,7 @@ public class Emprestimo {
         this.cliente = cliente;
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dataDevolucao;
-        this.livrosEmprestados = new ArrayList<>();
+        this.livrosEmprestados = new LinkedList<>();
         this.estadoEmprestimo = Status.EMPRESTADO;
     }
 
@@ -37,7 +36,6 @@ public class Emprestimo {
         verificarStatus();
         return estadoEmprestimo;
     }
-
     public void setEstadoEmprestimo(Status estadoEmprestimo) {
         this.estadoEmprestimo = estadoEmprestimo;
     }
@@ -45,7 +43,6 @@ public class Emprestimo {
     public LocalDate getDataDevolucao() {
         return dataDevolucao;
     }
-
     public void setDataDevolucao(LocalDate dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
@@ -53,13 +50,15 @@ public class Emprestimo {
     public LocalDate getDataEmprestimo() {
         return dataEmprestimo;
     }
-
     public void setDataEmprestimo(LocalDate dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
     }
 
-    public List<Livro> getLivrosEmprestados() {
+    public LinkedList<Livro> getLivrosEmprestados() {
         return livrosEmprestados;
+    }
+    public void setLivrosEmprestados(LinkedList<Livro> livrosEmprestados) {
+        this.livrosEmprestados = livrosEmprestados;
     }
 
     public void addLivro(Livro livro) {
@@ -72,14 +71,16 @@ public class Emprestimo {
     public Cliente getCliente() {
         return cliente;
     }
-
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
-    public void devolverLivro(Livro livro) {
-        if (livrosEmprestados.remove(livro)) {
+    public static void devolverEmprestimo(Emprestimo emprestimo) {
+        for (Livro livro : emprestimo.getLivrosEmprestados()) {
             livro.setCopiasNoAcervo(livro.getCopiasNoAcervo() + 1);
+            emprestimo.getCliente().removerLivroEmPosse(livro);
         }
+        emprestimo.setEstadoEmprestimo(Status.DEVOLVIDO);
+        
     }
 }

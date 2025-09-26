@@ -19,7 +19,6 @@ public class Livro{
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -27,7 +26,6 @@ public class Livro{
     public Autor getAutor() {
         return autor;
     }
-
     public void setAutor(Autor autor) {
         this.autor = autor;
     }
@@ -35,7 +33,6 @@ public class Livro{
     public Editora getEditora() {
         return editora;
     }
-
     public void setEditora(Editora editora) {
         this.editora = editora;
     }
@@ -43,7 +40,6 @@ public class Livro{
     public int getCopiasTotal() {
         return copiasTotal;
     }
-
     public void setCopiasTotal(int copiasTotal) {
         this.copiasTotal = copiasTotal;
     }
@@ -51,7 +47,6 @@ public class Livro{
     public int getCopiasNoAcervo() {
         return copiasNoAcervo;
     }
-
     public void setCopiasNoAcervo(int copiasNoAcervo) {
         this.copiasNoAcervo = copiasNoAcervo;
     }
