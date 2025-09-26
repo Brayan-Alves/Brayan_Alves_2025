@@ -14,13 +14,17 @@ public class MainB{
         System.out.printf("3 - Acessar como Cliente\n");
         System.out.println("4 - Sair");
         
+        int indexLogin = 0;
         while (true) {
             int entrada = lerRestritoA();
             if(entrada == 1){
+                indexLogin = escolherLogin(biblioteca, entrada);
                 menuGerente(biblioteca);
             }else if(entrada == 2){
+                indexLogin = escolherLogin(biblioteca, entrada);
                 menuFuncionario(biblioteca);
             }else if(entrada == 3){
+                indexLogin = escolherLogin(biblioteca, entrada);
                 menuCliente(biblioteca);
             }else{
                 System.out.println("Saindo...");
@@ -33,192 +37,202 @@ public class MainB{
 
     public static void menuGerente(Biblioteca biblioteca){
         System.out.printf("Menu do Gerente\n");
-        System.out.printf("1 - Cadastrar Funcionário\n");
-        System.out.printf("2 - Remover Funcionário\n");
-        System.out.printf("3 - Cadastrar Livro\n");
-        System.out.printf("4 - Remover Livro\n");
-        System.out.printf("5 - Cadastrar Cliente\n");
-        System.out.printf("6 - Remover Cliente\n");
-        System.out.printf("7 - Cadastrar Gerente\n");
-        System.out.printf("8 - Remover Gerente\n");
-        System.out.println("9 - Alterar Salário");
-        System.out.printf("10 - Voltar ao Menu Principal\n");
-        System.out.printf("11 - Sair\n");
+        System.out.println("1 - Gerenciar Gerentes");
+        System.out.println("2 - Gerenciar Funcionários");
+        System.out.println("3 - Gerenciar Clienetes");
+        System.out.println("4 - Gerenciar Livro");
+        System.out.println("5 - Voltar pro Menu");
+        System.out.println("6 - Sair");
+        // System.out.printf("1 - Cadastrar Funcionário\n");
+        // System.out.printf("2 - Remover Funcionário\n");
+        // System.out.printf("3 - Cadastrar Livro\n");
+        // System.out.printf("4 - Remover Livro\n");
+        // System.out.printf("5 - Cadastrar Cliente\n");
+        // System.out.printf("6 - Remover Cliente\n");
+        // System.out.printf("7 - Cadastrar Gerente\n");
+        // System.out.printf("8 - Remover Gerente\n");
+        // System.out.println("9 - Alterar Salário");
+        // System.out.printf("10 - Voltar ao Menu Principal\n");
+        // System.out.printf("11 - Sair\n");
 
-        int entrada = lerRestritoB();
+        int entrada = lerRestritoL();
 
         if(entrada == 1){
-            System.out.printf("Cadastrar Funcionário\n");
-            String nome, email, senha, telefone, cpf; 
-            double salario;
-            System.out.printf("Nome: ");
-            nome = LER.nextLine();
-            System.out.printf("Email: ");
-            email = LER.nextLine();
-            System.out.printf("Senha: ");
-            senha = LER.nextLine();
-            System.out.printf("Telefone: ");
-            telefone = LER.nextLine();
-            System.out.printf("CPF: ");
-            cpf = LER.nextLine();
-            System.out.println("Salário: ");
-            salario = LER.nextDouble();
-            System.out.println("Turno:\n1 - Manhã\n2 - Tarde\n3 - Noite");
-            entrada = lerRestritoC();
-            if(entrada == 1){
-                biblioteca.addFuncionario(new Funcionario(nome, email, senha, telefone, cpf, Funcionario.Turnos.MANHA, salario)); 
-            }else if(entrada == 2){
-                biblioteca.addFuncionario(new Funcionario(nome, email, senha, telefone, cpf, Funcionario.Turnos.TARDE, salario));
-            }else{
-                biblioteca.addFuncionario(new Funcionario(nome, email, senha, telefone, cpf, Funcionario.Turnos.NOITE, salario));
-            }
-            System.out.println("Funcionário cadastrado com sucesso!");
-        }else if(entrada == 2){
-            if(biblioteca.getFuncionarios().isEmpty()){
-                System.out.println("Não há funcionários cadastrados na biblioteca!");
-                return;
-            }else{
-                System.out.printf("Remover Funcionário\n");
-                for(int i = 0; i < biblioteca.getFuncionarios().size(); i++){
-                    System.out.printf((i+1) + " - " + biblioteca.getFuncionarios().get(i).getNome() + "\n");
-                }
-                System.out.println("Escolha o funcionário que deseja remover:");
-                entrada = lerRestritoD(biblioteca);
-                biblioteca.removeFuncionario(biblioteca.getFuncionarios().get(entrada-1));
-                System.out.println("Funcionário removido com sucesso!");
-            }
-        }else if(entrada == 3){
-            System.out.printf("Cadastrar Livro\n");
-            String titulo, autor, editora;
-            int copiasNoAcervo;
-            System.out.printf("Título: ");
-            titulo = LER.nextLine();
-            System.out.printf("Autor: ");
-            autor = LER.nextLine();
-            System.out.printf("Editora: ");
-            editora = LER.nextLine();
-            System.out.printf("Número de cópias no acervo: ");
-            copiasNoAcervo = LER.nextInt();
-            Livro livro = new Livro(titulo, new Autor(autor), new Editora(editora), copiasNoAcervo);
-            biblioteca.addLivro(livro);
-            System.out.println("Livro cadastrado com sucesso!");
-        }else if(entrada == 4){
-            if(biblioteca.getLivros().isEmpty()){
-                System.out.println("Não há livros cadastrados na biblioteca!");
-                return;
-            }else{
-                System.out.printf("Remover Livro\n");
-                for(int i = 0; i < biblioteca.getLivros().size(); i++){
-                    System.out.printf((i+1) + " - " + biblioteca.getLivros().get(i).getNome() + "\n");
-                }
-                System.out.println("Escolha o livro que deseja remover:");
-                entrada = lerRestritoE(biblioteca);
-                biblioteca.removeLivro(biblioteca.getLivros().get(entrada-1));
-                System.out.println("Livro removido com sucesso!");
-            }
-        }else if(entrada == 5){
-            System.out.printf("Cadastrar Cliente\n");
-            String nome, email, senha, telefone, cpf;
-            System.out.printf("Nome: ");
-            nome = LER.nextLine();
-            System.out.printf("Email: ");
-            email = LER.nextLine();
-            System.out.printf("Senha: ");
-            senha = LER.nextLine();
-            System.out.printf("Telefone: ");
-            telefone = LER.nextLine();
-            System.out.printf("CPF: ");
-            cpf = LER.nextLine();
-            Cliente cliente = new Cliente(nome, email, senha, telefone, cpf);
-            biblioteca.addCliente(cliente);
-            System.out.println("Cliente cadastrado com sucesso!");
-        }else if(entrada == 6){
-            if(biblioteca.getClientes().size() == 0){
-                System.out.println("Não há clientes cadastrados na biblioteca!");
-                return;
-            }else{
-                System.out.printf("Remover Cliente\n");
-                for(int i = 0; i < biblioteca.getClientes().size(); i++){
-                    System.out.printf((i+1) + " - " + biblioteca.getClientes().get(i).getNome() + "\n");
-                }
-                System.out.println("Escolha o cliente que deseja remover:");
-                entrada = lerRestritoF(biblioteca);
-                biblioteca.removeCliente(biblioteca.getClientes().get(entrada-1));
-                System.out.println("Cliente removido com sucesso!");
-            }
-        }else if(entrada == 7){
-            System.out.printf("Cadastrar Gerente\n");
-            String nome, email, senha, telefone, cpf;
-            System.out.printf("Nome: ");
-            nome = LER.nextLine();
-            System.out.printf("Email: ");
-            email = LER.nextLine();
-            System.out.printf("Senha: ");
-            senha = LER.nextLine();
-            System.out.printf("Telefone: ");
-            telefone = LER.nextLine();
-            System.out.printf("CPF: ");
-            cpf = LER.nextLine();
-            Gerente gerente = new Gerente(nome, email, senha, telefone, cpf);
-            biblioteca.addGerente(gerente);
-            System.out.println("Gerente cadastrado com sucesso!");
-        }else if(entrada == 8){
-            if(biblioteca.getGerentes().size() == 1){
-                System.out.println("Não é possível remover o último gerente da biblioteca!");
-                return;
-            }else{
-                System.out.printf("Remover Gerente\n");
-                for(int i = 0; i < biblioteca.getGerentes().size(); i++){
-                    System.out.printf((i+1) + " - " + biblioteca.getGerentes().get(i).getNome() + "\n");
-                }
-                System.out.println("Escolha o gerente que deseja remover:");
-                entrada = lerRestritoG(biblioteca);
-                biblioteca.removeGerente(biblioteca.getGerentes().get(entrada-1));
-                System.out.println("Gerente removido com sucesso!");
-            }
-        }else if(entrada == 9){
-            System.out.println("Alterar Salário");
-            System.out.println("Mudar sálario de:\n1 - Funcionário\n2 - Gerente");
-            entrada = lerRestritoH();
-            if(entrada == 1){
-                if(biblioteca.getFuncionarios().isEmpty()){
-                    System.out.println("Não há funcionários cadastrados na biblioteca!");
-                    return;
-                }else{
-                    System.out.printf("Alterar Salário do Funcionário\n");
-                    for(int i = 0; i < biblioteca.getFuncionarios().size(); i++){
-                        System.out.printf((i+1) + " - " + biblioteca.getFuncionarios().get(i).getNome() + "\n");
-                    }
-                    System.out.println("Escolha o funcionário que deseja alterar o salário:");
-                    entrada = lerRestritoD(biblioteca);
-                    System.out.println("Novo salário:");
-                    double salario = LER.nextDouble();
-                    biblioteca.getFuncionarios().get(entrada-1).setSalario(salario);
-                    System.out.println("Salário alterado com sucesso!");
-                }
-            }else{
-                if(biblioteca.getGerentes().isEmpty()){
-                    System.out.println("Não há gerentes cadastrados na biblioteca!");
-                    return;
-                }else{
-                    System.out.printf("Alterar Salário do Gerente\n");
-                    for(int i = 0; i < biblioteca.getGerentes().size(); i++){
-                        System.out.printf((i+1) + " - " + biblioteca.getGerentes().get(i).getNome() + "\n");
-                    }
-                    System.out.println("Escolha o gerente que deseja alterar o salário:");
-                    entrada = lerRestritoG(biblioteca);
-                    System.out.println("Novo salário:");
-                    double salario = LER.nextDouble();
-                    biblioteca.getGerentes().get(entrada-1).setSalario(salario);
-                    System.out.println("Salário alterado com sucesso!");
-                }
-            }
-        }else if(entrada == 10){
-            return;
-        }else{
-            System.out.println("Saindo...");
-            System.exit(0);
+            System.out.println("Gerenciar Gerentes");
+            
         }
+        // if(entrada == 1){
+        //     System.out.printf("Cadastrar Funcionário\n");
+        //     String nome, email, senha, telefone, cpf; 
+        //     double salario;
+        //     System.out.printf("Nome: ");
+        //     nome = LER.nextLine();
+        //     System.out.printf("Email: ");
+        //     email = LER.nextLine();
+        //     System.out.printf("Senha: ");
+        //     senha = LER.nextLine();
+        //     System.out.printf("Telefone: ");
+        //     telefone = LER.nextLine();
+        //     System.out.printf("CPF: ");
+        //     cpf = LER.nextLine();
+        //     System.out.println("Salário: ");
+        //     salario = LER.nextDouble();
+        //     System.out.println("Turno:\n1 - Manhã\n2 - Tarde\n3 - Noite");
+        //     entrada = lerRestritoC();
+        //     if(entrada == 1){
+        //         biblioteca.addFuncionario(new Funcionario(nome, email, senha, telefone, cpf, Funcionario.Turnos.MANHA, salario)); 
+        //     }else if(entrada == 2){
+        //         biblioteca.addFuncionario(new Funcionario(nome, email, senha, telefone, cpf, Funcionario.Turnos.TARDE, salario));
+        //     }else{
+        //         biblioteca.addFuncionario(new Funcionario(nome, email, senha, telefone, cpf, Funcionario.Turnos.NOITE, salario));
+        //     }
+        //     System.out.println("Funcionário cadastrado com sucesso!");
+        // }else if(entrada == 2){
+        //     if(biblioteca.getFuncionarios().isEmpty()){
+        //         System.out.println("Não há funcionários cadastrados na biblioteca!");
+        //         return;
+        //     }else{
+        //         System.out.printf("Remover Funcionário\n");
+        //         for(int i = 0; i < biblioteca.getFuncionarios().size(); i++){
+        //             System.out.printf((i+1) + " - " + biblioteca.getFuncionarios().get(i).getNome() + "\n");
+        //         }
+        //         System.out.println("Escolha o funcionário que deseja remover:");
+        //         entrada = lerRestritoD(biblioteca);
+        //         biblioteca.removeFuncionario(biblioteca.getFuncionarios().get(entrada-1));
+        //         System.out.println("Funcionário removido com sucesso!");
+        //     }
+        // }else if(entrada == 3){
+        //     System.out.printf("Cadastrar Livro\n");
+        //     String titulo, autor, editora;
+        //     int copiasNoAcervo;
+        //     System.out.printf("Título: ");
+        //     titulo = LER.nextLine();
+        //     System.out.printf("Autor: ");
+        //     autor = LER.nextLine();
+        //     System.out.printf("Editora: ");
+        //     editora = LER.nextLine();
+        //     System.out.printf("Número de cópias no acervo: ");
+        //     copiasNoAcervo = LER.nextInt();
+        //     Livro livro = new Livro(titulo, new Autor(autor), new Editora(editora), copiasNoAcervo);
+        //     biblioteca.addLivro(livro);
+        //     System.out.println("Livro cadastrado com sucesso!");
+        // }else if(entrada == 4){
+        //     if(biblioteca.getLivros().isEmpty()){
+        //         System.out.println("Não há livros cadastrados na biblioteca!");
+        //         return;
+        //     }else{
+        //         System.out.printf("Remover Livro\n");
+        //         for(int i = 0; i < biblioteca.getLivros().size(); i++){
+        //             System.out.printf((i+1) + " - " + biblioteca.getLivros().get(i).getNome() + "\n");
+        //         }
+        //         System.out.println("Escolha o livro que deseja remover:");
+        //         entrada = lerRestritoE(biblioteca);
+        //         biblioteca.removeLivro(biblioteca.getLivros().get(entrada-1));
+        //         System.out.println("Livro removido com sucesso!");
+        //     }
+        // }else if(entrada == 5){
+        //     System.out.printf("Cadastrar Cliente\n");
+        //     String nome, email, senha, telefone, cpf;
+        //     System.out.printf("Nome: ");
+        //     nome = LER.nextLine();
+        //     System.out.printf("Email: ");
+        //     email = LER.nextLine();
+        //     System.out.printf("Senha: ");
+        //     senha = LER.nextLine();
+        //     System.out.printf("Telefone: ");
+        //     telefone = LER.nextLine();
+        //     System.out.printf("CPF: ");
+        //     cpf = LER.nextLine();
+        //     Cliente cliente = new Cliente(nome, email, senha, telefone, cpf);
+        //     biblioteca.addCliente(cliente);
+        //     System.out.println("Cliente cadastrado com sucesso!");
+        // }else if(entrada == 6){
+        //     if(biblioteca.getClientes().size() == 0){
+        //         System.out.println("Não há clientes cadastrados na biblioteca!");
+        //         return;
+        //     }else{
+        //         System.out.printf("Remover Cliente\n");
+        //         for(int i = 0; i < biblioteca.getClientes().size(); i++){
+        //             System.out.printf((i+1) + " - " + biblioteca.getClientes().get(i).getNome() + "\n");
+        //         }
+        //         System.out.println("Escolha o cliente que deseja remover:");
+        //         entrada = lerRestritoF(biblioteca);
+        //         biblioteca.removeCliente(biblioteca.getClientes().get(entrada-1));
+        //         System.out.println("Cliente removido com sucesso!");
+        //     }
+        // }else if(entrada == 7){
+        //     System.out.printf("Cadastrar Gerente\n");
+        //     String nome, email, senha, telefone, cpf;
+        //     System.out.printf("Nome: ");
+        //     nome = LER.nextLine();
+        //     System.out.printf("Email: ");
+        //     email = LER.nextLine();
+        //     System.out.printf("Senha: ");
+        //     senha = LER.nextLine();
+        //     System.out.printf("Telefone: ");
+        //     telefone = LER.nextLine();
+        //     System.out.printf("CPF: ");
+        //     cpf = LER.nextLine();
+        //     Gerente gerente = new Gerente(nome, email, senha, telefone, cpf);
+        //     biblioteca.addGerente(gerente);
+        //     System.out.println("Gerente cadastrado com sucesso!");
+        // }else if(entrada == 8){
+        //     if(biblioteca.getGerentes().size() == 1){
+        //         System.out.println("Não é possível remover o último gerente da biblioteca!");
+        //         return;
+        //     }else{
+        //         System.out.printf("Remover Gerente\n");
+        //         for(int i = 0; i < biblioteca.getGerentes().size(); i++){
+        //             System.out.printf((i+1) + " - " + biblioteca.getGerentes().get(i).getNome() + "\n");
+        //         }
+        //         System.out.println("Escolha o gerente que deseja remover:");
+        //         entrada = lerRestritoG(biblioteca);
+        //         biblioteca.removeGerente(biblioteca.getGerentes().get(entrada-1));
+        //         System.out.println("Gerente removido com sucesso!");
+        //     }
+        // }else if(entrada == 9){
+        //     System.out.println("Alterar Salário");
+        //     System.out.println("Mudar sálario de:\n1 - Funcionário\n2 - Gerente");
+        //     entrada = lerRestritoH();
+        //     if(entrada == 1){
+        //         if(biblioteca.getFuncionarios().isEmpty()){
+        //             System.out.println("Não há funcionários cadastrados na biblioteca!");
+        //             return;
+        //         }else{
+        //             System.out.printf("Alterar Salário do Funcionário\n");
+        //             for(int i = 0; i < biblioteca.getFuncionarios().size(); i++){
+        //                 System.out.printf((i+1) + " - " + biblioteca.getFuncionarios().get(i).getNome() + "\n");
+        //             }
+        //             System.out.println("Escolha o funcionário que deseja alterar o salário:");
+        //             entrada = lerRestritoD(biblioteca);
+        //             System.out.println("Novo salário:");
+        //             double salario = LER.nextDouble();
+        //             biblioteca.getFuncionarios().get(entrada-1).setSalario(salario);
+        //             System.out.println("Salário alterado com sucesso!");
+        //         }
+        //     }else{
+        //         if(biblioteca.getGerentes().isEmpty()){
+        //             System.out.println("Não há gerentes cadastrados na biblioteca!");
+        //             return;
+        //         }else{
+        //             System.out.printf("Alterar Salário do Gerente\n");
+        //             for(int i = 0; i < biblioteca.getGerentes().size(); i++){
+        //                 System.out.printf((i+1) + " - " + biblioteca.getGerentes().get(i).getNome() + "\n");
+        //             }
+        //             System.out.println("Escolha o gerente que deseja alterar o salário:");
+        //             entrada = lerRestritoG(biblioteca);
+        //             System.out.println("Novo salário:");
+        //             double salario = LER.nextDouble();
+        //             biblioteca.getGerentes().get(entrada-1).setSalario(salario);
+        //             System.out.println("Salário alterado com sucesso!");
+        //         }
+        //     }
+        // }else if(entrada == 10){
+        //     return;
+        // }else{
+        //     System.out.println("Saindo...");
+        //     System.exit(0);
+        // }
     }
 
     public static void menuFuncionario(Biblioteca biblioteca){
@@ -447,13 +461,26 @@ public class MainB{
 
 
 
-    public static void escolherLogin(Biblioteca biblioteca, int tipo){
+    public static int escolherLogin(Biblioteca biblioteca, int tipo){
         if(tipo == 1){
             System.out.println("Escolha o gerente:");
             for(int i = 0; i < biblioteca.getGerentes().size(); i++){
                 System.out.printf((i+1) + " - " + biblioteca.getGerentes().get(i).getNome() + "\n");
             }
-            int entrada = lerRestritoG(biblioteca);
+            return lerRestritoG(biblioteca);
+
+        }else if(tipo == 2){
+            System.out.println("Escolha o funcionário:");
+            for (int i = 0; i < biblioteca.getFuncionarios().size(); i++) {
+                System.out.printf((i+1) + " - " + biblioteca.getFuncionarios().get(i).getNome() + "\n");
+            }
+            return lerRestritoD(biblioteca);
+        }else{
+            System.out.println("Escolha o cliente:");
+            for (int i = 0; i < biblioteca.getClientes().size(); i++) {
+                System.out.printf((i+1) + " - " + biblioteca.getClientes().get(i).getNome() + "\n");
+            }
+            return lerRestritoF(biblioteca);
         }
     }
 
