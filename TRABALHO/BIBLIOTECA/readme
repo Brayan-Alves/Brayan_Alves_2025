@@ -4,3 +4,9 @@ Nesse sistema o usuario pode se cadastrar como Cliente, Funcionário e Gerente p
 como fazer emprestimos(no caso do Funcionário), gerenciar os perfis(no caso do Gerente), ver os livros em posse(no caso do Cliente) entre diversas
 outras funções, minha maior dificuldade foi sem duvida o main, demorei mais de 70% do tempo que eu dei no trabalho, com as interções com o usuario 
 e restrições etc.
+
+Como executar:
+    Abra o projeto em uma IDE
+    Execute o arquivo Main.java
+    Será mostrado no terminal o menu interativo podendo acessar o sistema como Gerente, Funcionário e Cliente
+    Para navegar usa-se comandos numériocos

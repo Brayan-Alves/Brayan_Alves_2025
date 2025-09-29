@@ -59,10 +59,10 @@ public class Main {
             System.out.println("1 - Cadastrar Gerente");
             System.out.println("2 - Remover Gerente");
             System.out.println("3 - Editar Gerente");
-            System.out.println("3 - Mudar Salário do Gerente");
-            System.out.println("4 - Voltar");
+            System.out.println("4 - Mudar Salário do Gerente");
+            System.out.println("5 - Voltar");
 
-            entrada = lerRestritoA();
+            entrada = lerRestritoI();
             limparTela();
             if (entrada == 1) {
                 cadastrarGerente(entrada, biblioteca);
@@ -73,7 +73,7 @@ public class Main {
             } else if (entrada == 4) {
                 mudarSalario(biblioteca, entrada, 1);
             } else {
-                return;
+                menuGerente(biblioteca);;
             }
         } else if (entrada == 2) {
             System.out.println("Gerenciar Funcionários");
@@ -81,18 +81,20 @@ public class Main {
             System.out.println("2 - Remover Funcionário");
             System.out.println("3 - Editar Funcionário");
             System.out.println("4 - Mudar Salário do Funcionário");
-            System.out.println("4 - Voltar");
+            System.out.println("5 - Voltar");
 
-            entrada = lerRestritoA();
+            entrada = lerRestritoI();
             limparTela();
             if (entrada == 1) {
                 cadastrarFuncionario(biblioteca, entrada);
             } else if (entrada == 2) {
                 removerFuncionario(biblioteca, entrada);
             } else if (entrada == 3) {
+                editarFuncionario(biblioteca, entrada);
+            } else if(entrada == 4){
                 mudarSalario(biblioteca, entrada, 2);
-            } else {
-                return;
+            }else{
+                menuGerente(biblioteca);
             }
         } else if (entrada == 3) {
             System.out.println("Gerenciar Clientes");
@@ -109,7 +111,7 @@ public class Main {
             } else if (entrada == 3) {
                 editarCliente(biblioteca, entrada);
             } else {
-                return;
+                menuGerente(biblioteca);;
             }
 
         } else if (entrada == 4) {
@@ -128,7 +130,7 @@ public class Main {
             } else if (entrada == 3) {
                 editarLivro(biblioteca, entrada);
             } else {
-                return;
+                menuGerente(biblioteca);;
             }
         } else if (entrada == 5) {
             return;
@@ -165,7 +167,7 @@ public class Main {
             } else if (entrada == 3) {
                 editarLivro(biblioteca, entrada);
             } else {
-                return;
+                menuFuncionario(biblioteca);;
             }
         } else if (entrada == 2) {
             System.out.println("Gerenciar Clientes");
@@ -183,7 +185,7 @@ public class Main {
             } else if (entrada == 3) {
                 editarCliente(biblioteca, entrada);
             } else {
-                return;
+                menuFuncionario(biblioteca);;
             }
         } else if (entrada == 3) {
             registrarEmprestimo(biblioteca, entrada);
@@ -652,6 +654,40 @@ public class Main {
 
             }
         }
+    }
+
+    public static void editarFuncionario(Biblioteca biblioteca, int entrada){
+        System.out.println("Editar Funcionário");
+        if (biblioteca.getGerentes().isEmpty()) {
+            System.out.println("Não há funcionários cadastrados na biblioteca!");
+            return;
+        }
+        System.out.printf("Alterar Dados do Funcionário\n");
+        for (int i = 0; i < biblioteca.getGerentes().size(); i++) {
+            System.out.printf((i + 1) + " - " + biblioteca.getGerentes().get(i).getNome() + "\n");
+        }
+        System.out.println("Escolha o funcionário que deseja alterar os dados:");
+        entrada = lerRestritoC(biblioteca);
+        limparTela();
+        Funcionario funcionario = biblioteca.getFuncionarios().get(entrada - 1);
+        System.out.println("Novo nome (atual: " + funcionario.getNome() + "): ");
+        limparBuffer();
+        String nome = LER.nextLine();
+        System.out.println("Novo email (atual: " + funcionario.getEmail() + "): ");
+        String email = LER.nextLine();
+        System.out.println("Nova senha (atual: " + funcionario.getSenha() + "): ");
+        String senha = LER.nextLine();
+        System.out.println("Novo telefone (atual: " + funcionario.getTelefone() + "): ");
+        String telefone = LER.nextLine();
+        System.out.println("Novo CPF (atual: " + funcionario.getCpf() + "): ");
+        String cpf = LER.nextLine();
+        limparTela();
+        funcionario.setNome(nome);
+        funcionario.setEmail(email);
+        funcionario.setSenha(senha);
+        funcionario.setTelefone(telefone);
+        funcionario.setCpf(cpf);
+        System.out.println("Dados do gerente alterados com sucesso!");
     }
 
     public static void verLivrosDisponiveis(Biblioteca biblioteca) {
